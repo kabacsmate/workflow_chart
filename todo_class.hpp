@@ -1,5 +1,5 @@
 /* This header files will contain my main class for the ToDo app */
-//#pragma once
+#pragma once
 
 #include <iostream>
 #include <stdint.h>
@@ -8,23 +8,24 @@
 
 class ToDo{
     private:
-        static uint32_t idCounter;
-        uint32_t id;
+        static unsigned int idCounter;
+        unsigned int id;
         std::string title;
         std::string description;
-        uint32_t priority;
+        unsigned int priority;
         void* preconditions;
         void* dependents;
         time_t deadline;
     public:
         // Constructor
-        ToDo(std::string = nullptr, std::string = nullptr, uint32_t = 0, time_t = 0);
+        ToDo() : id(idCounter++), title(""), description(""), priority(0), preconditions(nullptr), dependents(nullptr), deadline(0) {}
+        ToDo(const std::string&, const std::string&, const unsigned int, const time_t);
 
         // Getter functions
-        uint32_t getID();
+        unsigned int getID();
         std::string getTitle();
         std::string getDescription();
-        uint32_t getPriority();
+        unsigned int getPriority();
         void* getPreconditions();
         void* getDependents();
         time_t getDeadline();
@@ -32,7 +33,7 @@ class ToDo{
         // Setter functions
         void setTitle(std::string);
         void setDescription(std::string);
-        void setPriority(uint32_t);
+        void setPriority(unsigned int);
         void setPreconditions(void*);
         void setDependents(void*);
         void setDeadline(time_t);
@@ -41,5 +42,3 @@ class ToDo{
         void print(); // Print the whole Object
 
 };
-
-//uint32_t ToDo::idCounter = 0;

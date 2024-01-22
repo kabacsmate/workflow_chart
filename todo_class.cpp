@@ -1,15 +1,15 @@
 #include "todo_class.hpp"
 
-
+unsigned int ToDo::idCounter = 0;
 // Constructor
-ToDo::ToDo(std::string title, std::string description, uint32_t priority, time_t deadline){
-    //id = ToDo::idCounter++;
-    title = title;
-    description = description;
-    priority = priority;
+ToDo::ToDo(const std::string& cTitle, const std::string& cDescription, uint32_t cPriority, time_t cDeadline){
+    id = ToDo::idCounter++;
+    title = cTitle;
+    description = cDescription;
+    priority = cPriority;
     preconditions = nullptr;
     dependents = nullptr;
-    deadline = deadline;
+    deadline = cDeadline;
 }
 
 // Getter functions
@@ -68,9 +68,10 @@ void ToDo::setDeadline(time_t newDeadline){
 
 //Other functions
 void ToDo::print(){
+    std::cout << "----------------------------------------" << std::endl;
     std::cout << "Identifier: " << getID() << std::endl;
     std::cout << "Title: " << getTitle() << std::endl;
     std::cout << "Description: " << getDescription() << std::endl;
     std::cout << "Priority: " << getPriority() << std::endl;
-    std::cout << "Deadline: " << getDeadline() << std::endl;
+    std::cout << "Deadline: " << getDeadline() << std::endl << std::endl;
 }
